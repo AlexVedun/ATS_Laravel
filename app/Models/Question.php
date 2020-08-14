@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
@@ -26,8 +27,23 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Question whereTestId($value)
  * @method static Builder|Question whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Collection|Answer[] $answers
+ * @property-read int|null $answers_count
+ * @property-read Test $test
  */
 class Question extends Model
 {
     protected $guarded = ['id'];
+
+    // Relations
+
+    public function test()
+    {
+        return $this->belongsTo(Test::class, 'test_id', 'id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

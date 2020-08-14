@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -39,6 +40,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|User whereType($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Collection|Test[] $tests
+ * @property-read int|null $tests_count
  */
 class User extends Authenticatable
 {
@@ -63,4 +66,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relations
+
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }

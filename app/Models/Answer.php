@@ -26,8 +26,16 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Answer whereQuestionId($value)
  * @method static Builder|Answer whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Question $question
  */
 class Answer extends Model
 {
     protected $guarded = ['id'];
+
+    // Relations
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class, 'question_id', 'id');
+    }
 }
