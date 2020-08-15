@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Test;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tests = Test::all();
+
+        return view('home', [
+            'tests' => $tests,
+        ]);
     }
 }

@@ -24,7 +24,7 @@ class TestSeeder extends Seeder
         for ($i = 0; $i < $tests; $i++)
         {
             $test = $user->tests()->create([
-                'name' => $faker->realText(100),
+                'name' => $faker->realText(rand(50, 80)),
             ]);
 
             for ($j = 0; $j < rand($minQuestions, $maxQuestions); $j++)

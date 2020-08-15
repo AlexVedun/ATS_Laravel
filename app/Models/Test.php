@@ -28,6 +28,8 @@ use Illuminate\Support\Carbon;
  * @property-read Collection|Question[] $questions
  * @property-read int|null $questions_count
  * @property-read User $user
+ * @property string $alias
+ * @method static Builder|Test whereAlias($value)
  */
 class Test extends Model
 {
